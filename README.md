@@ -86,3 +86,20 @@ class Car(models.Model):
 
 ```
 
+# Create database migrations
+
+Run the following command to create the migration files:
+
+```bash
+python manage.py makemigrations
+```
+
+Output
+
+```bash
+Migrations for 'cars':
+  cars/migrations/0001_initial.py
+    + Create model Feature
+    + Create model Manufacturer
+    + Create model Car
+```
