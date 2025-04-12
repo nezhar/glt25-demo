@@ -193,3 +193,22 @@ class CarViewSet(viewsets.ModelViewSet):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
 ```
+
+# Configure app URLs
+
+Add the views to the URL configuration in `cars/urls.py`:
+
+```python
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ManufacturerViewSet, FeatureViewSet, CarViewSet
+
+router = DefaultRouter()
+router.register('manufacturers', ManufacturerViewSet)
+router.register('features', FeatureViewSet)
+router.register('cars', CarViewSet)
+urlpatterns = [
+    path('', include(router.urls)),
+]
+```
+
