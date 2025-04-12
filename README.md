@@ -212,3 +212,16 @@ urlpatterns = [
 ]
 ```
 
+# Add app URLs to the project
+
+Add the app URLs to the main project URL configuration in `carstack/urls.py`:
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('cars.urls')),
+]
+```
