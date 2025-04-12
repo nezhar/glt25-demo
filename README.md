@@ -145,3 +145,29 @@ Running migrations:
   Applying sessions.0001_initial... OK
 ```
 
+# Create serializers for DRF
+
+In `cars/serializers.py`, create serializers for the models:
+
+```python
+from rest_framework import serializers
+from .models import Manufacturer, Feature, Car
+
+class ManufacturerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Manufacturer
+        fields = '__all__'
+
+class FeatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feature
+        fields = '__all__'
+
+class CarSerializer(serializers.ModelSerializer):
+    manufacturer = ManufacturerSerializer()
+    features = FeatureSerializer(many=True)
+
+    class Meta:
+        model = Car
+        fields = '__all__'
+```
