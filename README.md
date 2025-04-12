@@ -14,3 +14,20 @@ pip install -r requirements.txt
 django-admin startproject carstack
 cd carstack
 ```
+
+# Create an app
+
+Create a Django app:
+
+```bash
+python manage.py startapp cars
+```
+
+Add the app to the `INSTALLED_APPS` list in `carstack/settings.py`. Make sure you add `'rest_framework'`, too.
+
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'cars',
+]
