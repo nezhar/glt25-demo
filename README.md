@@ -267,3 +267,23 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 ```
+
+# Settings for drf-spectacular
+
+```python
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Carstack API',
+    'DESCRIPTION': 'An API for managing cars',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True,
+}
+```
+
+See all setting <https://drf-spectacular.readthedocs.io/en/latest/settings.html>
+
+Export schema with the cli:
+
+```bash
+python manage.py spectacular --file openapi.yaml
+```
