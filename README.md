@@ -225,3 +225,13 @@ urlpatterns = [
     path('api/', include('cars.urls')),
 ]
 ```
+
+# Run the Django server
+
+Run the Django development server:
+
+```bash
+python manage.py runserver
+```
+
+You can now access the API at http://localhost:8000/api/.
