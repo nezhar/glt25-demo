@@ -287,3 +287,18 @@ Export schema with the cli:
 ```bash
 python manage.py spectacular --file openapi.yaml
 ```
+
+# View Schema
+
+View with Swagger UI:
+
+```bash
+docker run --rm -p 80:8080 \
+  -v ./openapi.yaml:/openapi.yaml \
+  -e SWAGGER_JSON=/openapi.yaml \
+  swaggerapi/swagger-ui
+```
+
+Visit http://localhost/
+
+As an alternative, you could also add a view to your app using [drf-spectacular-sidecar](https://github.com/tfranzel/drf-spectacular-sidecar)
