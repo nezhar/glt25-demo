@@ -235,3 +235,35 @@ python manage.py runserver
 ```
 
 You can now access the API at http://localhost:8000/api/.
+
+
+# Add drf-spectacular to the project
+
+Add `drf_spectacular` to your requirements.txt file
+
+```
+django==5.2.0
+djangorestframework==3.16.0
+drf-spectacular==0.28.0
+```
+
+Then run `pip install -r requirements.txt`
+
+
+Add `drf_spectacular` to your installed apps in `carstack/settings.py`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    'drf_spectacular',
+]
+```
+
+Add AutoSchema class to your DRF settings
+
+```python
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+```
