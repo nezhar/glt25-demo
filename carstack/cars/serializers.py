@@ -12,8 +12,20 @@ class FeatureSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CarSerializer(serializers.ModelSerializer):
-    manufacturer = ManufacturerSerializer()
-    features = FeatureSerializer(many=True)
+    manufacturer = ManufacturerSerializer(read_only=True)
+    manufacturer_id = serializers.PrimaryKeyRelatedField(
+        queryset=Manufacturer.objects.all(),
+        source='manufacturer',
+        write_only=True,
+    )
+    features = FeatureSerializer(many=True, read_only=True)
+    features_ids = serializers.ListField(
+        child=serializers.PrimaryKeyRelatedField(
+            queryset=Feature.objects.all()
+        ),
+        write_only=True,
+        source='features',
+    )
 
     class Meta:
         model = Car
