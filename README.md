@@ -302,3 +302,29 @@ docker run --rm -p 80:8080 \
 Visit http://localhost/
 
 As an alternative, you could also add a view to your app using [drf-spectacular-sidecar](https://github.com/tfranzel/drf-spectacular-sidecar)
+
+
+# Add a compatible change to the API
+
+Add an optional rating field to the cars model in `cars/models.py`
+
+```python
+from django.core.validators import MinValueValidator, MaxValueValidator
+
+class Car(models.Model):
+    ...
+
+    rating = models.IntegerField(
+        null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(10)]
+    )
+    
+    ...
+```
+
+Update the database
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
