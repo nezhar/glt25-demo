@@ -3,13 +3,13 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Manufacturer(models.Model):
-    name = models.CharField(max_length=100)
+    brand = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
     founded_year = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
     
     def __str__(self):
-        return self.name
+        return self.brand
 
 class Feature(models.Model):
     name = models.CharField(max_length=100)

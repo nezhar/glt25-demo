@@ -328,3 +328,21 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+
+# Create a breaking change to the API
+
+Rename `name` to `brand` in `Manufacturer` model in `cars/models.py`
+
+```python
+class Manufacturer(models.Model):
+    ...
+    brand = models.CharField(max_length=100)  # Renamen from name to brand
+    ...
+```
+
+Update the database
+
+```
+python manage.py makemigrations # This will ask if you want to rename the column
+python manage.py migrate
+```
